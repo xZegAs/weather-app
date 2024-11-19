@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import WeatherForm from './components/WeatherForm';
-import WeatherCard from './components/WeatherCard';
-import { CloudLightning } from 'lucide-react';
+import React, { useState } from "react";
+import WeatherForm from "./components/WeatherForm";
+import WeatherCard from "./components/WeatherCard";
+import { CloudLightning } from "lucide-react";
 
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 interface WeatherData {
   location: string;
@@ -32,7 +32,7 @@ function App() {
       );
 
       if (!response.ok) {
-        throw new Error('Location not found. Please try again.');
+        throw new Error("Location not found. Please try again.");
       }
 
       const data = await response.json();
@@ -47,7 +47,7 @@ function App() {
         pressure: data.main.pressure,
       });
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong');
+      setError(err instanceof Error ? err.message : "Something went wrong");
       setWeatherData(null);
     } finally {
       setIsLoading(false);
@@ -60,7 +60,7 @@ function App() {
         <div className="flex items-center justify-center gap-3 mb-12">
           <CloudLightning className="w-10 h-10 text-purple-400" />
           <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            WeatherPro
+            Weather App
           </h1>
         </div>
 
